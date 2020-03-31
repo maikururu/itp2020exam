@@ -1,4 +1,4 @@
 package Exercise;
 
-public class Endurance {
+public class Endurance extends Exercise {
 }

@@ -1,4 +1,4 @@
 package Exercise;
 
-public class Strength {
+public class Strength extends Exercise {
 }
