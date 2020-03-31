@@ -16,5 +16,6 @@ public class Endurance extends Exercise {
 
         return equipment;
     }
+    //TODO create a function for operation (I think it will be interval running and marathon running)
 }
 
