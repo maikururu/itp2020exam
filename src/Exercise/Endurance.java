@@ -3,12 +3,20 @@ package Exercise;
 public class Endurance extends Exercise {
     public String equipment;
 
-    public void endurance(){
+    public void endurance() {
 
     }
+
     //TODO continue developing this class to do what it is suppose to do when its done
-    public void setEquipment(String _equipment){
+    public void setEquipment(String _equipment) {
+
         equipment = _equipment;
     }
+
+    public String getEquipment(){
+
+        return equipment;
+    }
+    //TODO create a function for operation (I think it will be interval running and marathon running)
 }
 
