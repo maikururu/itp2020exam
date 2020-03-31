@@ -8,7 +8,13 @@ public class Endurance extends Exercise {
     }
     //TODO continue developing this class to do what it is suppose to do when its done
     public void setEquipment(String _equipment){
+
         equipment = _equipment;
+    }
+
+    public String getEquipment(){
+
+        return equipment;
     }
 }
 
