@@ -14,4 +14,14 @@ public class Flexibility extends Exercise {
     public String getRequirement(){
         return requirement;
     }
+
+    @Override
+    public String toString() {
+        return "Flexibility: " +
+                "\nRequirement = '" + requirement + '\'' +
+                "\nIntensity = " + intensity +
+                "\nDuration = " + duration +
+                "\nRepetitions = " + repetitions +
+                "\nSets = " + sets;
+    }
 }
