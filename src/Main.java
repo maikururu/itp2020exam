@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Program newProgram = new Program();
         System.out.println(newProgram.toString());
+        System.out.println("New change");
     }
 
     public void addPrograms(Program _program) {
