@@ -14,8 +14,15 @@ public class Balance extends Exercise {
     public String getEquipment(){
         return equipment;
     }
-}
 
-/*
-Dette er verdens kuleste kommentar, wihu
-*/
+    @Override
+    public String toString() {
+        return "Balance{" +
+                "equipment='" + equipment + '\'' +
+                ", intensity=" + intensity +
+                ", duration=" + duration +
+                ", repetitions=" + repetitions +
+                ", sets=" + sets +
+                '}';
+    }
+}
