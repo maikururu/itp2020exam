@@ -3,7 +3,7 @@ package Exercise;
 public class Flexibility extends Exercise {
     public String requirement;
 
-    public void flexibility(){
+    public void flexibility() {
 
     }
 
