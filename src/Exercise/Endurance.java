@@ -7,7 +7,6 @@ public class Endurance extends Exercise {
 
     }
 
-    //TODO continue developing this class to do what it is suppose to do when its done
     public void setEquipment(String _equipment) {
 
         equipment = _equipment;
@@ -17,6 +16,14 @@ public class Endurance extends Exercise {
 
         return equipment;
     }
-    //TODO create a function for operation (I think it will be interval running and marathon running)
+    @Override
+    public String toString() {
+        return "Endurance: " +
+                "\nEquipment = '" + equipment + '\'' +
+                "\nIntensity = " + intensity +
+                "\nDuration = " + duration +
+                "\nRepetitions = " + repetitions +
+                "\nSets = " + sets;
+    }
 }
 
