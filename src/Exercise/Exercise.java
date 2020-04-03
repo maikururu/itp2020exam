@@ -5,4 +5,8 @@ public class Exercise {
     public int duration;
     public int repetitions;
     public int sets;
+
+    private void exercise() {
+
+    }
 }
