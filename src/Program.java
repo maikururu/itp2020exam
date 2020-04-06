@@ -1,5 +1,4 @@
 import Exercise.Exercise;
-
 import java.util.List;
 
 public class Program {

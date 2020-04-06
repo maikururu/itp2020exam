@@ -76,7 +76,7 @@ public class Person {
         // loops through programs
         for (Program program:programs){
             //loops through all exercises within each program
-            for (Exercise exercise:program.exercises){
+            for (Exercise exercise : program.getExercises()){
                 // if persons preferred exercise exists
                 if (exercise.name.equals(preferredExerciseName)){
 
