@@ -32,17 +32,11 @@ public class Program {
         return intensityLevel;
     }
 
-    public void addExercises(Exercise exercises) {
-        this.exercises.add(exercises);
+    public void addExercise(Exercise exercise) {
+        this.exercises.add(exercise);
     }
 
-    public String getExercises() {
-        String exercisesString = "";
-
-        for(Exercise exercise : exercises){
-            exercisesString += exercise.toString();
-        }
-
-        return exercisesString;
+    public List<Exercise> getExercises() {
+        return exercises;
     }
 }
