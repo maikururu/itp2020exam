@@ -8,6 +8,17 @@ public class Person {
     Program currentProgram;
     public List<Program> acceptableProgramsList;
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "preferredExercise=" + preferredExercise +
+                ", preferredExerciseName='" + preferredExerciseName + '\'' +
+                ", acceptableIntensity=" + acceptableIntensity +
+                ", currentProgram=" + currentProgram +
+                ", acceptableProgramsList=" + acceptableProgramsList +
+                '}';
+    }
+
     public void setCurrentProgram(Program newProgram) {
         this.currentProgram = newProgram;
     }
