@@ -10,7 +10,11 @@ public class Main {
         System.out.println("New change");
     }
 
-    public void addPrograms(Program _program) {
+    public void addPrograms(Program _program)
+    {
         programs.add(_program);
     }
+
+
+
 }
