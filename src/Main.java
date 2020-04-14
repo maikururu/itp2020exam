@@ -14,7 +14,7 @@ public class Main {
         Flexibility f1 = new Flexibility("Tøying", 2, 5, 1, 3, "Har trent");
         Endurance e1 = new Endurance("Sprinting", 10, 15, 3, 1, "Løpe sko");
 
-        Program program1 = new Program(40);
+        Program program1 = new Program();
         program1.addExercise(s1);
         program1.addExercise(b1);
         program1.addExercise(f1);
@@ -22,6 +22,8 @@ public class Main {
 
         System.out.println(program1.toString());
         System.out.println("New change");
+
+        Person person1 = new Person();
     }
 
     public void addPrograms(Program _program)

@@ -11,11 +11,14 @@ public class Program {
     public int intensityLevel;
     public boolean isBalanced;
 
-    public Program(int _duration) {
-        setDuration(_duration);
-        //setIntensityLevel(_intensity);
+    public Program() {}
 
-        //addExercise(exercises);
+    private void updateProgram(int _exerciseIntensity, int _exerciseDuration) {
+        setIntensityLevel(_exerciseIntensity);
+        updateDuration(_exerciseDuration);
+
+        sortExercisesByIntensity();
+        updateBalance();
     }
 
     public String toString() {
@@ -33,29 +36,11 @@ public class Program {
 
     //Method collection to set intensity
     //-----------------------------------------------------------//
-    public void setIntensityLevel(int intensityLevel) {
-        this.intensityLevel = intensityLevel;
+    public void setIntensityLevel(int _intensityLevel) {
+        if(_intensityLevel > this.intensityLevel)
+            this.intensityLevel = _intensityLevel;
     }
 
-    public void setIntensityLevel(Balance exercise){
-        if(exercise.intensity > this.intensityLevel)
-            this.setIntensityLevel(exercise.intensity);
-    }
-
-    public void setIntensityLevel(Endurance exercise){
-        if(exercise.intensity > this.intensityLevel)
-            this.setIntensityLevel(exercise.intensity);
-    }
-
-    public void setIntensityLevel(Strength exercise){
-        if(exercise.intensity > this.intensityLevel)
-            this.setIntensityLevel(exercise.intensity);
-    }
-
-    public void setIntensityLevel(Flexibility exercise){
-        if(exercise.intensity > this.intensityLevel)
-            this.setIntensityLevel(exercise.intensity);
-    }
     //-----------------------------------------------------------//
 
     public int getIntensityLevel() {
@@ -66,30 +51,22 @@ public class Program {
     //-----------------------------------------------------------//
     public void addExercise(Balance exercise){
         this.exercises.add(exercise);
-        setIntensityLevel(exercise);
-        sortExercisesByIntensity();
-        updateBalance();
+        updateProgram(exercise.intensity, exercise.duration);
     }
 
     public void addExercise(Endurance exercise){
         this.exercises.add(exercise);
-        setIntensityLevel(exercise);
-        sortExercisesByIntensity();
-        updateBalance();
+        updateProgram(exercise.intensity, exercise.duration);
     }
 
     public void addExercise(Flexibility exercise){
         this.exercises.add(exercise);
-        setIntensityLevel(exercise);
-        sortExercisesByIntensity();
-        updateBalance();
+        updateProgram(exercise.intensity, exercise.duration);
     }
 
     public void addExercise(Strength exercise){
         this.exercises.add(exercise);
-        setIntensityLevel(exercise);
-        sortExercisesByIntensity();
-        updateBalance();
+        updateProgram(exercise.intensity, exercise.duration);
     }
     //-----------------------------------------------------------//
 
@@ -144,5 +121,10 @@ public class Program {
     //Method to sort exercises ArrayList by increasing intensity
     public void sortExercisesByIntensity() {
         Collections.sort(exercises);
+    }
+
+    //Method to update Program.duration
+    private void updateDuration(int _exerciseDuration) {
+       this.duration += _exerciseDuration * 2;
     }
 }
