@@ -1,14 +1,16 @@
-import Exercise.Exercise;
+import Exercise.*;
 import java.util.List;
 
-public class Program {
-    public List<Exercise> exercises;
+public class Program<E> {
+    public List<? super Exercise> exercises;
     public int duration;
     public int intensityLevel;
 
-    public void program(int _duration, int _intensity) {
+    public Program(int _duration, int _intensity) {
         setDuration(_duration);
         setIntensityLevel(_intensity);
+
+        //addExercise(exercises);
     }
 
     public String toString() {
@@ -27,15 +29,37 @@ public class Program {
         this.intensityLevel = intensityLevel;
     }
 
+//    public <T super Exercise> void setIntensityLevel(T exercise){
+//
+//    }
+
     public int getIntensityLevel() {
         return intensityLevel;
     }
 
-    public void addExercise(Exercise exercise) {
+    //Method collection to add type of exercises to exercises array
+    //-----------------------------------------------------------//
+    public void addExercise(Balance exercise){
+        this.exercises.add(exercise);
+
+        if(exercise.intensity > this.intensityLevel)
+            this.setIntensityLevel(exercise.intensity);
+    }
+
+    public void addExercise(Endurance exercise){
         this.exercises.add(exercise);
     }
 
-    public List<Exercise> getExercises() {
+    public void addExercise(Flexibility exercise){
+        this.exercises.add(exercise);
+    }
+
+    public void addExercise(Strength exercise){
+        this.exercises.add(exercise);
+    }
+    //-----------------------------------------------------------//
+
+    public List<? super Exercise> getExercises() {
         return exercises;
     }
 }
