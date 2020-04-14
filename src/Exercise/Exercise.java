@@ -7,7 +7,8 @@ public class Exercise {
     public int repetitions;
     public int sets;
 
-    public void exercise(String _name, int _intensity, int _duration, int _repetitions, int _sets){
+
+    public Exercise(String _name, int _intensity, int _duration, int _repetitions, int _sets){
         setName(_name);
         setIntensity(_intensity);
         setDuration(_duration);
