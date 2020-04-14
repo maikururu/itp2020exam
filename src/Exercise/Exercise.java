@@ -7,7 +7,59 @@ public class Exercise {
     public int repetitions;
     public int sets;
 
-    private void exercise() {
+    public void exercise(){
 
+    }
+
+    // setters
+    public void setName(String _name) {
+        this.name = _name;
+    }
+
+    public void setIntensity(int intensity) {
+        this.intensity = intensity;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public void setRepetitions(int repetitions) {
+        this.repetitions = repetitions;
+    }
+
+    public void setSets(int sets) {
+        this.sets = sets;
+    }
+
+    // getters
+    public String getName() {
+        return name;
+    }
+
+    public int getIntensity() {
+        return intensity;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public int getRepetitions() {
+        return repetitions;
+    }
+
+    public int getSets() {
+        return sets;
+    }
+
+    @Override
+    public String toString() {
+        return "Exercise: " +
+                "\nName = " + name +
+                "\nIntensity = '" + intensity + '\'' +
+                "\nDuration = " + duration +
+                "\nRepetitions = " + repetitions +
+                "\nSets = " + sets;
     }
 }
