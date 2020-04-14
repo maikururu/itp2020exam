@@ -29,9 +29,10 @@ public class Program<E> {
         this.intensityLevel = intensityLevel;
     }
 
-//    public <T super Exercise> void setIntensityLevel(T exercise){
-//
-//    }
+    public void setIntensityLevel(Balance exercise){
+        if(exercise.intensity > this.intensityLevel)
+            this.setIntensityLevel(exercise.intensity);
+    }
 
     public int getIntensityLevel() {
         return intensityLevel;
@@ -41,9 +42,6 @@ public class Program<E> {
     //-----------------------------------------------------------//
     public void addExercise(Balance exercise){
         this.exercises.add(exercise);
-
-        if(exercise.intensity > this.intensityLevel)
-            this.setIntensityLevel(exercise.intensity);
     }
 
     public void addExercise(Endurance exercise){
