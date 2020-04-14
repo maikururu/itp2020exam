@@ -7,11 +7,14 @@ import java.util.List;
 
 public class Program {
     public List<Exercise> exercises = new ArrayList<Exercise>();
+    public String programType;
     public int duration;
     public int intensityLevel;
     public boolean isBalanced;
 
-    public Program() {}
+    public Program(String _programType) {
+        setProgramType(_programType);
+    }
 
     private void updateProgram(int _exerciseIntensity, int _exerciseDuration) {
         setIntensityLevel(_exerciseIntensity);
@@ -24,6 +27,15 @@ public class Program {
     public String toString() {
         return String.format("\n=================\n" +
                 " Duration: %s \n Intensity: %s \n Balanced: %s \n Program Exercises: %s", getDuration(), getIntensityLevel(), getBalanced(), getExercises());
+    }
+
+    //Setter and getter for programType
+    public String getProgramType() {
+        return programType;
+    }
+
+    public void setProgramType(String _programType) {
+        this.programType = _programType;
     }
 
     public void setDuration(int duration) {

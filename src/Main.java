@@ -12,9 +12,9 @@ public class Main {
         Strength s1 = new Strength("Vektløfting", 8, 2, 8, 4, 40, "Dumbell");
         Balance b1 = new Balance("Yoga", 5, 2, 8, 4, "Yogamat");
         Flexibility f1 = new Flexibility("Tøying", 2, 5, 1, 3, "Har trent");
-        Endurance e1 = new Endurance("Sprinting", 10, 15, 3, 1, "Løpe sko");
+        Endurance e1 = new Endurance("Sprinting", 6, 15, 3, 1, "Løpe sko");
 
-        Program program1 = new Program();
+        Program program1 = new Program("Flexibility");
         program1.addExercise(s1);
         program1.addExercise(b1);
         program1.addExercise(f1);
@@ -23,7 +23,10 @@ public class Main {
         System.out.println(program1.toString());
         System.out.println("New change");
 
-        Person person1 = new Person();
+        Person person1 = new Person(7, "Strength");
+        person1.addNewProgram(program1);
+        System.out.println(person1);
+
     }
 
     public void addPrograms(Program _program)
