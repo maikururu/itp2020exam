@@ -92,7 +92,6 @@ public class Person {
             for (Exercise exercise : program.getExercises()){
                 // if persons preferred exercise exists
                 if (exercise.name.equals(preferredExerciseName)){
-
                     // if preferredExercise exists - store exercise
                     preferredExercise = exercise;
                     foundPreferredExercise = true;

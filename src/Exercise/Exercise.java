@@ -60,7 +60,8 @@ public class Exercise {
 
     @Override
     public String toString() {
-        return "Exercise: " +
+        return "\n=============================\n" +
+                "Exercise: " +
                 "\nName = " + name +
                 "\nIntensity = '" + intensity + '\'' +
                 "\nDuration = " + duration +

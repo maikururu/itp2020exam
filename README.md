@@ -4,7 +4,7 @@ Eksamen i ITP2200
 
 # Requirements
 1. Exercises are grouped into Programs.
-    - Each program keeps an account of the overall intensity (the highest intensity among the included exercises).
+    - ~~Each program keeps an account of the overall intensity (the highest intensity among the included exercises).~~
     - Each program keeps account of whether or not it is balanced. A balanced program has at least one exercise of each type.
     - Each program has the exercises sorted in order of increasing intensity.
     - Each program has an overall duration. The duration of an exercise is the twice the sum of the durations of all the exercises it includes (to account for rest).

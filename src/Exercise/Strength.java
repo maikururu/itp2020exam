@@ -31,6 +31,6 @@ public class Strength extends Exercise {
     public String toString() {
         return super.toString() +
                 "\nWeights = " + weights +
-                "\nEquipments = '" + equipment;
+                "\nEquipments = '" + equipment + "\'";
     }
 }
