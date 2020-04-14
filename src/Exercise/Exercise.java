@@ -1,6 +1,6 @@
 package Exercise;
 
-public class Exercise {
+public class Exercise implements Comparable<Exercise>{
     public String name;
     public int intensity;
     public int duration;
@@ -56,6 +56,11 @@ public class Exercise {
 
     public int getSets() {
         return sets;
+    }
+
+    @Override
+    public int compareTo(Exercise exercise){
+        return this.intensity - exercise.intensity;
     }
 
     @Override

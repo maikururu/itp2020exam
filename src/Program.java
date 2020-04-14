@@ -2,6 +2,7 @@ import Exercise.*;
 
 import java.lang.invoke.SwitchPoint;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Program {
@@ -66,24 +67,28 @@ public class Program {
     public void addExercise(Balance exercise){
         this.exercises.add(exercise);
         setIntensityLevel(exercise);
+        sortExercisesByIntensity();
         updateBalance();
     }
 
     public void addExercise(Endurance exercise){
         this.exercises.add(exercise);
         setIntensityLevel(exercise);
+        sortExercisesByIntensity();
         updateBalance();
     }
 
     public void addExercise(Flexibility exercise){
         this.exercises.add(exercise);
         setIntensityLevel(exercise);
+        sortExercisesByIntensity();
         updateBalance();
     }
 
     public void addExercise(Strength exercise){
         this.exercises.add(exercise);
         setIntensityLevel(exercise);
+        sortExercisesByIntensity();
         updateBalance();
     }
     //-----------------------------------------------------------//
@@ -92,7 +97,8 @@ public class Program {
         return exercises;
     }
 
-    //Method to check if Program is balanced
+    //Methods to check if Program is balanced
+    //-----------------------------------------------------------//
     public boolean getBalanced(){
         return this.isBalanced;
     }
@@ -131,5 +137,12 @@ public class Program {
         } else  {
             this.isBalanced = false;
         }
+    }
+    //-----------------------------------------------------------//
+
+
+    //Method to sort exercises ArrayList by increasing intensity
+    public void sortExercisesByIntensity() {
+        Collections.sort(exercises);
     }
 }
