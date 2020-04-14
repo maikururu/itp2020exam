@@ -18,10 +18,6 @@ public class Flexibility extends Exercise {
     @Override
     public String toString() {
         return "Flexibility: " +
-                "\nRequirement = '" + requirement + '\'' +
-                "\nIntensity = " + intensity +
-                "\nDuration = " + duration +
-                "\nRepetitions = " + repetitions +
-                "\nSets = " + sets;
+                "\nRequirement = '" + requirement;
     }
 }

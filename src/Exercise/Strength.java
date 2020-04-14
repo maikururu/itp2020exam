@@ -28,10 +28,6 @@ public class Strength extends Exercise {
     public String toString() {
         return "Flexibility: " +
                 "\nWeights = " + weights +
-                "\nEquipments = '" + equipments + '\'' +
-                "\nIntensity = " + intensity +
-                "\nDuration = " + duration +
-                "\nRepetitions = " + repetitions +
-                "\nSets = " + sets;
+                "\nEquipments = '" + equipments;
     }
 }
