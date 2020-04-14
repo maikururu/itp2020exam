@@ -1,5 +1,6 @@
 import Exercise.*;
 
+import java.lang.invoke.SwitchPoint;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,7 @@ public class Program {
     public List<Exercise> exercises = new ArrayList<Exercise>();
     public int duration;
     public int intensityLevel;
+    public boolean isBalanced;
 
     public Program(int _duration) {
         setDuration(_duration);
@@ -17,7 +19,7 @@ public class Program {
 
     public String toString() {
         return String.format("\n=================\n" +
-                " Duration: %s \n Intensity: %s \n Program Exercises: %s", getDuration(), getIntensityLevel(), getExercises());
+                " Duration: %s \n Intensity: %s \n Balanced: %s \n Program Exercises: %s", getDuration(), getIntensityLevel(), getBalanced(), getExercises());
     }
 
     public void setDuration(int duration) {
@@ -64,25 +66,70 @@ public class Program {
     public void addExercise(Balance exercise){
         this.exercises.add(exercise);
         setIntensityLevel(exercise);
+        updateBalance();
     }
 
     public void addExercise(Endurance exercise){
         this.exercises.add(exercise);
         setIntensityLevel(exercise);
+        updateBalance();
     }
 
     public void addExercise(Flexibility exercise){
         this.exercises.add(exercise);
         setIntensityLevel(exercise);
+        updateBalance();
     }
 
     public void addExercise(Strength exercise){
         this.exercises.add(exercise);
         setIntensityLevel(exercise);
+        updateBalance();
     }
     //-----------------------------------------------------------//
 
     public List<Exercise> getExercises() {
         return exercises;
+    }
+
+    //Method to check if Program is balanced
+    public boolean getBalanced(){
+        return this.isBalanced;
+    }
+
+    public void setBalanced(boolean balanced) {
+        isBalanced = balanced;
+    }
+
+    public void updateBalance(){
+        boolean hasBalance = false,
+                hasEndurance = false,
+                hasFlexibility = false,
+                hasStrength = false;
+
+        for(Exercise exercise : exercises) {
+            String classType = exercise.getClass().getName();
+
+            switch (classType) {
+                case "Exercise.Balance":
+                    hasBalance = true;
+                    break;
+                case "Exercise.Endurance":
+                    hasEndurance = true;
+                    break;
+                case "Exercise.Flexibility":
+                    hasFlexibility = true;
+                    break;
+                case "Exercise.Strength":
+                    hasStrength = true;
+                    break;
+            }
+        }
+
+        if(hasBalance && hasEndurance && hasFlexibility && hasStrength){
+            this.isBalanced = true;
+        } else  {
+            this.isBalanced = false;
+        }
     }
 }
