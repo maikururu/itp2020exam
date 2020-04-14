@@ -8,6 +8,8 @@ public class Main {
         Program newProgram = new Program();
         System.out.println(newProgram.toString());
         System.out.println("New change");
+
+        Exercise exercice1 = new exercice();
     }
 
     public void addPrograms(Program _program)
