@@ -18,7 +18,7 @@ public class Balance extends Exercise {
 
     @Override
     public String toString() {
-        return super.toString() + "Balance{" +
-                "equipment=" + equipment;
+        return super.toString() +
+                "\nEquipment = " + equipment;
     }
 }

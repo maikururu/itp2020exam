@@ -1,22 +1,29 @@
 import Exercise.Exercise;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Person {
+    public String preferredExerciseType = "";
     public Exercise preferredExercise;
-    public String preferredExerciseName = "";
-    public int acceptableIntensity;
+    public int preferredIntensity;
     Program currentProgram;
-    public List<Program> acceptableProgramsList;
+    public List<Program> acceptableProgramsList = new ArrayList<Program>();
+
+    public Person(int _preferredIntensity, String _preferredExerciseType) {
+        setPreferredExerciseType(_preferredExerciseType);
+        setPreferredIntensity(_preferredIntensity);
+    }
 
     @Override
     public String toString() {
         return "Person{" +
-                "preferredExercise=" + preferredExercise +
-                ", preferredExerciseName='" + preferredExerciseName + '\'' +
-                ", acceptableIntensity=" + acceptableIntensity +
-                ", currentProgram=" + currentProgram +
-                ", acceptableProgramsList=" + acceptableProgramsList +
-                '}';
+                "\n preferredExerciseType: '" + preferredExerciseType + '\'' +
+                ",\n preferredExercise: " + preferredExercise +
+                ",\n preferredIntensity:" + preferredIntensity +
+                ",\n currentProgram: " + currentProgram +
+                ",\n acceptableProgramsList: " + acceptableProgramsList +
+                "\n}";
     }
 
     public void setCurrentProgram(Program newProgram) {
@@ -24,37 +31,58 @@ public class Person {
     }
 
     public Program getCurrentProgram() {
-        return currentProgram;
+        return this.currentProgram;
     }
 
-    public void setPreferredExercise(Exercise type) {
-        preferredExercise = type;
+    public void setPreferredExerciseType(String _type){
+        this.preferredExerciseType = _type;
+    }
+
+    public void setPreferredExercise(Exercise _exercise) {
+        this.preferredExercise = _exercise;
     }
 
     public Exercise getPreferredExercise() {
-        return preferredExercise;
+        return this.preferredExercise;
     }
 
-    public void setAcceptableIntensity(int acceptableIntensity) {
-        this.acceptableIntensity = acceptableIntensity;
+    public void setPreferredIntensity(int preferredIntensity) {
+        this.preferredIntensity = preferredIntensity;
     }
 
-    public int getAcceptableIntensity() {
-        return acceptableIntensity;
+    public int getPreferredIntensity() {
+        return this.preferredIntensity;
     }
 
-    // Checks if program is acceptable according to acceptableIntensity
-    public boolean acceptableProgram(Program program){
-        // Create variable that stores program intesity
+    //Method to add new program, if it is acceptable, set it as the current program.
+    public void addNewProgram(Program _program){
+        boolean acceptableIntensity = acceptableProgramIntensity(_program);
+        boolean preferredType = isPreferredType(_program);
+
+        System.out.println("ACCEPTABLE INTENSITY:::" + acceptableIntensity);
+        System.out.println("PREFERRED TYPE:::"+preferredType);
+
+        if(acceptableIntensity && preferredType) {
+            setCurrentProgram(_program);
+        }
+    }
+
+    //TODO
+    // Rip out adding the program to the acceptableProgramList
+    // And make that it's own method.
+
+    // Checks if program is acceptable according to preferredIntensity
+    public boolean acceptableProgramIntensity(Program program){
+        // Create variable that stores program intensity
         int pIntensity = program.getIntensityLevel();
 
         // Checks if program intensity is within acceptable range
-        if (pIntensity >= acceptableIntensity * 0.9 && pIntensity <= acceptableIntensity *1.1) {
+        if (pIntensity >= this.preferredIntensity - (10 * 0.1) && pIntensity <= this.preferredIntensity + (10 * 0.1)) {
             // boolean that states if program is already in acceptableProgramsList
             boolean isInList = false;
 
             // loops through the acceptableProgramsList to check if program is already in list
-            for (Program acceptableProgram:acceptableProgramsList){
+            for (Program acceptableProgram : acceptableProgramsList){
                 // if found program in list
                 if (acceptableProgram.equals(program)) {
                     isInList = true;
@@ -74,11 +102,24 @@ public class Person {
         return false;
     }
 
+    //Method to check if program type is of preferredProgramType
+    public boolean isPreferredType(Program _program){
+        if(this.preferredExerciseType.equals(_program.programType)){
+            return true;
+        }
+
+        return false;
+    }
+
+
+    //TODO
+    // Move selectPreferred method over to main (ExerciseManager) and refactor
+
     // method to check if persons preferred exercise exists or not, disregarding acceptable intensity level
     public void selectPreferred(Program[] programs){
 
         // if preferredExerciseName is not set - return (stop method execution)
-        if (preferredExerciseName.equals("")) {
+        if (this.preferredExerciseType.equals("")) {
             System.out.println("preferredExercise is not set");
             return;
         }
@@ -89,10 +130,9 @@ public class Person {
             //loops through all exercises within each program
             for (Exercise exercise : program.getExercises()){
                 // if persons preferred exercise exists
-                if (exercise.name.equals(preferredExerciseName)){
-
+                if (exercise.name.equals(this.preferredExerciseType)){
                     // if preferredExercise exists - store exercise
-                    preferredExercise = exercise;
+                    this.preferredExercise = exercise;
                     foundPreferredExercise = true;
                 }
             }
