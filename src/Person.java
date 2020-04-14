@@ -1,4 +1,4 @@
-import Exercise.Exercise;
+import Exercise.*;
 
 import java.util.ArrayList;
 import java.util.List;
