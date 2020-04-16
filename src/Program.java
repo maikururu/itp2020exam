@@ -6,13 +6,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class Program {
+    public enum Type {Balance, Endurance, Flexibility, Strength}
     public List<Exercise> exercises = new ArrayList<Exercise>();
-    public String programType;
+    public Type programType;
     public int duration;
     public int intensityLevel;
     public boolean isBalanced;
 
-    public Program(String _programType) {
+    public Program(Type _programType) {
         setProgramType(_programType);
     }
 
@@ -30,11 +31,11 @@ public class Program {
     }
 
     //Setter and getter for programType
-    public String getProgramType() {
+    public Type getProgramType() {
         return programType;
     }
 
-    public void setProgramType(String _programType) {
+    public void setProgramType(Type _programType) {
         this.programType = _programType;
     }
 
