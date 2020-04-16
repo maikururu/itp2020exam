@@ -4,6 +4,9 @@ import javax.script.AbstractScriptEngine;
 import java.util.ArrayList;
 import java.util.List;
 
+// Everyone did some work but github was not really nice to everyone.
+// ^ READMe?
+
 public class Main {
     public static void main(String[] args) {
         List<Program> programs = new ArrayList<Program>();
