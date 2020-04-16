@@ -3,6 +3,9 @@ import Exercise.*;
 import javax.script.AbstractScriptEngine;
 import java.util.List;
 
+// Everyone did some work but github was not really nice to everyone.
+// ^ READMe?
+
 public class Main {
 
     List<Program> programs;
