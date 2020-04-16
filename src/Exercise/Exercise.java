@@ -1,6 +1,6 @@
 package Exercise;
 
-public class Exercise {
+public class Exercise implements Comparable<Exercise>{
     public String name;
     public int intensity;
     public int duration;
@@ -59,8 +59,14 @@ public class Exercise {
     }
 
     @Override
+    public int compareTo(Exercise exercise){
+        return this.intensity - exercise.intensity;
+    }
+
+    @Override
     public String toString() {
-        return "Exercise: " +
+        return "\n=============================\n" +
+                "Exercise: " +
                 "\nName = " + name +
                 "\nIntensity = '" + intensity + '\'' +
                 "\nDuration = " + duration +
