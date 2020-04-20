@@ -3,11 +3,11 @@ package Exercise;
 public class Endurance extends Exercise {
     public String equipment;
 
-    public void endurance() {
-
+    public Endurance(String _name, int _intensity, int _duration, int _repetitions, int _sets, String _equipment){
+        super(_name, _intensity, _duration, _repetitions, _sets);
+        setEquipment(_equipment);
     }
 
-    //TODO continue developing this class to do what it is suppose to do when its done
     public void setEquipment(String _equipment) {
 
         equipment = _equipment;
@@ -17,6 +17,10 @@ public class Endurance extends Exercise {
 
         return equipment;
     }
-    //TODO create a function for operation (I think it will be interval running and marathon running)
+    @Override
+    public String toString() {
+        return super.toString() +
+                "\nEquipment = '" + equipment;
+    }
 }
 
