@@ -11,7 +11,7 @@ public class Program {
     public Type programType;
     public int duration;
     public int intensityLevel;
-    public boolean isBalanced;
+    public boolean isBalancedProgram;
 
     public Program(Type _programType) {
         setProgramType(_programType);
@@ -22,7 +22,7 @@ public class Program {
         updateDuration(_exerciseDuration);
 
         sortExercisesByIntensity();
-        updateBalance();
+        updateBalancedProgram();
     }
 
     public String toString() {
@@ -90,14 +90,14 @@ public class Program {
     //Methods to check if Program is balanced
     //-----------------------------------------------------------//
     public boolean getBalanced(){
-        return this.isBalanced;
+        return this.isBalancedProgram;
     }
 
-    public void setBalanced(boolean balanced) {
-        isBalanced = balanced;
+    public void setBalancedProgram(boolean balanced) {
+        isBalancedProgram = balanced;
     }
 
-    public void updateBalance(){
+    public void updateBalancedProgram(){
         boolean hasBalance = false,
                 hasEndurance = false,
                 hasFlexibility = false,
@@ -123,9 +123,9 @@ public class Program {
         }
 
         if(hasBalance && hasEndurance && hasFlexibility && hasStrength){
-            this.isBalanced = true;
+            this.isBalancedProgram = true;
         } else  {
-            this.isBalanced = false;
+            this.isBalancedProgram = false;
         }
     }
     //-----------------------------------------------------------//
