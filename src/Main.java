@@ -1,6 +1,9 @@
 import Exercise.*;
 
 import javax.script.AbstractScriptEngine;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,8 +11,18 @@ import java.util.List;
 // ^ READMe?
 
 public class Main {
+
+
     public static void main(String[] args) {
-        List<Program> programs = new ArrayList<Program>();
+        ExerciseManager manager = new ExerciseManager();
+
+        try {
+            manager.buildProgram();
+        } catch (IOException err) {
+            System.out.println("Oh shoot... an IOException error occurred.\nSomeone didn't enter values they should have, shame on you.");
+        }
+
+        /*List<Program> programs = new ArrayList<Program>();
         List<Person> persons = new ArrayList<Person>();
 
         System.out.println("\nCreating Exercises\n==============================================");
@@ -49,23 +62,6 @@ public class Main {
         System.out.println("\nChecking Appropriation\n==============================================");
 
         //Check if program is appropriate to person
-        isAppropriate(program1, person1);
-    }
-
-    // Method to check if persons preferred exercise exists or not, disregarding acceptable intensity level
-    public static void recommendPrograms(List<Program> _programs, Person _person){
-        // loops through programs
-        for (Program program : _programs){
-            if(_person.acceptableProgram(program)){
-                System.out.println("\nProgram "+program.getProgramType()+" is recommended for "+ _person.getName());
-            }
-        }
-    }
-
-    // Method to tell if a program is appropriate for a given person.
-    public static void isAppropriate(Program _program, Person _person){
-        if(_person.acceptableProgram(_program)) {
-            System.out.println("\nProgram "+_program.getProgramType()+" is appropriate for "+ _person.getName());
-        }
+        isAppropriate(program1, person1);*/
     }
 }

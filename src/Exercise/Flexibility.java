@@ -19,6 +19,6 @@ public class Flexibility extends Exercise {
     @Override
     public String toString() {
         return super.toString() +
-                "\nRequirement = '" + requirement;
+                "\nRequirement = " + requirement;
     }
 }
