@@ -66,25 +66,11 @@ public class Program {
 
     //Method collection to add type of exercises to exercises array
     //-----------------------------------------------------------//
-    public void addExercise(Balance exercise){
+    public void addExercise(Exercise exercise){
         this.exercises.add(exercise);
         updateProgram(exercise.intensity, exercise.duration);
     }
 
-    public void addExercise(Endurance exercise){
-        this.exercises.add(exercise);
-        updateProgram(exercise.intensity, exercise.duration);
-    }
-
-    public void addExercise(Flexibility exercise){
-        this.exercises.add(exercise);
-        updateProgram(exercise.intensity, exercise.duration);
-    }
-
-    public void addExercise(Strength exercise){
-        this.exercises.add(exercise);
-        updateProgram(exercise.intensity, exercise.duration);
-    }
     //-----------------------------------------------------------//
 
     public List<Exercise> getExercises() {
