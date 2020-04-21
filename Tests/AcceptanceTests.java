@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 
-public class AcceptanceClass {
+public class AcceptanceTests {
 
     ExerciseManager manager = new ExerciseManager();
 
