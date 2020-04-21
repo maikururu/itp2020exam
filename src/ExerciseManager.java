@@ -60,19 +60,25 @@ public class ExerciseManager {
     }
 
     // Method to check if persons preferred exercise exists or not, disregarding acceptable intensity level
-    public void recommendPrograms(List<Program> _programs, Person _person){
+    public List<Program> recommendPrograms(List<Program> _programs, Person _person){
+        List<Program> programList = new ArrayList<Program>();
+
         // loops through programs
         for (Program program : _programs){
             if(_person.acceptableProgram(program)){
                 System.out.println("\nProgram "+program.getProgramType()+" is recommended for "+ _person.getName());
+                programList.add(program);
             }
         }
+        return programList;
     }
 
     // Method to tell if a program is appropriate for a given person.
-    public void isAppropriate(Program _program, Person _person){
+    public boolean isAppropriate(Program _program, Person _person){
         if(_person.acceptableProgram(_program)) {
             System.out.println("\nProgram "+_program.getProgramType()+" is appropriate for "+ _person.getName());
+            return true;
         }
+        return false;
     }
 }

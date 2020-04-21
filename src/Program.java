@@ -1,6 +1,7 @@
 import Exercise.*;
 
 import java.lang.invoke.SwitchPoint;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -127,7 +128,13 @@ public class Program {
     }
 
     //Method to update Program.duration
-    private void updateDuration(int _exerciseDuration) {
-       this.duration += _exerciseDuration * 2;
+    public void updateDuration(int _exerciseDuration) {
+
+        if(_exerciseDuration <= 0) {
+            System.out.println("Exercise duration can not be 0 or less.");
+            return;
+        }
+        this.duration += _exerciseDuration * 2;
+
     }
 }

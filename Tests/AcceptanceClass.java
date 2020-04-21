@@ -1,6 +1,7 @@
 import Exercise.*;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,18 +10,18 @@ import static org.junit.Assert.*;
 
 public class AcceptanceClass {
 
-    //Persons Test
+    ExerciseManager manager = new ExerciseManager();
 
     Program balanceProgram = new Program(Program.Type.Balance);
 
     Exercise b  = new Balance("Balance", 2, 10, 10, 3, "Jumprope");
-    Exercise e = new Endurance("Endurance", 5, 10, 10, 3, "Running shoes");
-    Exercise f = new Flexibility("Flexibility", 3, 10, 10, 3, "Tights");
-    Exercise s = new Strength("Strength", 7, 10, 10, 3, 60, "Dumbells");
+    Exercise e = new Endurance("Endurance", 5, 13, 10, 3, "Running shoes");
+    Exercise f = new Flexibility("Flexibility", 3, 5, 10, 3, "Tights");
+    Exercise s = new Strength("Strength", 7, 18, 10, 3, 60, "Dumbells");
 
     Person person1 = new Person("Kari",5, Program.Type.Balance);
 
-
+    //Persons Test
     @Test
     public void testPreferredType() {
         boolean isPreferredType = person1.isPreferredType(balanceProgram);
@@ -46,6 +47,7 @@ public class AcceptanceClass {
             }
         }
     }
+
 
     // Program tests
     @Test
@@ -109,20 +111,73 @@ public class AcceptanceClass {
                 System.out.println("List is not sorted.");
                 break;
             }
-
         }
-
         assertTrue(isSorted);
         System.out.println("List is sorted.");
+    }
 
+    @Test
+    public void testUpdateDuration() {
+        balanceProgram = new Program(Program.Type.Balance);
 
+        // Test if duration updates correctly
+        balanceProgram.setDuration(10);
+        balanceProgram.updateDuration(1);
+
+        assertTrue((balanceProgram.getDuration() == 12 ));
+
+        // Test negative value
+        balanceProgram.setDuration(10);
+        balanceProgram.updateDuration(-1);
+
+        assertTrue(balanceProgram.getDuration() == 10);
+
+        // Test negative value
+        balanceProgram.setDuration(10);
+        balanceProgram.updateDuration(0);
+
+        assertTrue(balanceProgram.getDuration() == 10);
     }
 
 
-
     //ExerciseManager Tests
-    ExerciseManager manager = new ExerciseManager();
+    @Test
+    public void testIsAppropriate() {
+        balanceProgram = new Program(Program.Type.Balance);
 
+        // Test if program does not meet requirements of persons preferred exercise type and intensity
+        balanceProgram.addExercise(b);
+        assertFalse(manager.isAppropriate(balanceProgram, person1));
+
+        // Test if program meets requirements of persons preferred exercise type and intensity
+        balanceProgram.addExercise(e);
+        assertTrue(manager.isAppropriate(balanceProgram, person1));
+    }
+
+    @Test
+    public void testRecommendProgram() {
+        List<Program> programList = new ArrayList<Program>();
+
+        balanceProgram = new Program(Program.Type.Balance);
+        Program enduranceProgram = new Program(Program.Type.Endurance);
+        Program flexibilityProgram = new Program(Program.Type.Flexibility);
+
+        // Add exercises we know will meet the preferred requirements
+        balanceProgram.addExercise(b);
+        balanceProgram.addExercise(e);
+
+        programList.add(balanceProgram);
+        programList.add(enduranceProgram);
+        programList.add(flexibilityProgram);
+
+        List<Program> recommendedList = manager.recommendPrograms(programList, person1);
+
+        for(Program program : recommendedList) {
+            System.out.println("Program "+ program.getProgramType() +" met the preferred person requirements of "+ person1.getName());
+
+            assertTrue(person1.acceptableProgram(program));
+        }
+    }
 
 
 }
