@@ -9,11 +9,7 @@ public class ExerciseManager {
     List<Person> persons = new ArrayList<Person>();
 
     public ExerciseManager(){
-        try {
-            buildProgram();
-        } catch (IOException err) {
-            System.out.println("Oh shoot... an IOException error occurred.\nSomeone didn't enter values they should have, shame on you.");
-        }
+
     }
 
     //Method to build a new program
