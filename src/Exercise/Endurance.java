@@ -20,7 +20,7 @@ public class Endurance extends Exercise {
     @Override
     public String toString() {
         return super.toString() +
-                "\nEquipment = '" + equipment;
+                "\nEquipment = " + equipment;
     }
 }
 
