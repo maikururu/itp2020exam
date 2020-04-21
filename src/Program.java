@@ -18,7 +18,7 @@ public class Program {
     }
 
     private void updateProgram(int _exerciseIntensity, int _exerciseDuration) {
-        setIntensityLevel(_exerciseIntensity);
+        updateMaxIntensityLevel(_exerciseIntensity);
         updateDuration(_exerciseDuration);
 
         sortExercisesByIntensity();
@@ -50,8 +50,12 @@ public class Program {
     //Method collection to set intensity
     //-----------------------------------------------------------//
     public void setIntensityLevel(int _intensityLevel) {
+        this.intensityLevel = _intensityLevel;
+    }
+
+    public void updateMaxIntensityLevel(int _intensityLevel) {
         if(_intensityLevel > this.intensityLevel)
-            this.intensityLevel = _intensityLevel;
+            this.setIntensityLevel(_intensityLevel);
     }
 
     //-----------------------------------------------------------//
