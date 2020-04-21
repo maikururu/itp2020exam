@@ -6,6 +6,38 @@ import static org.junit.Assert.assertTrue;
 
 public class UnitTests {
 
+    // Exercice class
+    @Test
+    public void testExerciceClass() {
+        Exercise e = new Exercise("Exercise", 5, 10, 30, 5);
+        // Testing getName()
+        assertEquals(e.getName(), "Exercise");
+        // Testing getIntensity()
+        assertEquals(e.getIntensity(), 5);
+        // Testing getDuration()
+        assertEquals(e.getDuration(), 10);
+        // Testing getRepetitions
+        assertEquals(e.getRepetitions(), 30);
+        // Testing getSets()
+        assertEquals(e.getSets(), 5);
+    }
+
+    @Test
+    public void testExerciseToString() {
+        Exercise e = new Exercise("Exercise", 5, 10, 30, 5);
+        String expected =
+                "\n=============================\nExercise: \nName = Exercise\nIntensity = '5'\nDuration = 10\nRepetitions = 30\nSets = 5";
+    }
+
+    @Test
+    public void testExerciseCompareTo() {
+        Exercise e = new Exercise("Exercise", 5, 10, 30, 5);
+        Exercise e2 = new Exercise("Exercise 2", 1, 10, 30, 5);
+
+        assertEquals(e.compareTo(e2), 4);
+
+    }
+
     // Balance class
     @Test
     public void testBalanceClass() {
