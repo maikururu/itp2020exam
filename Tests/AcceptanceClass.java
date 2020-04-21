@@ -36,8 +36,27 @@ public class AcceptanceClass {
         }
     }
 
+    // Program tests
+    @Test
+    public void testUpdateMaxIntensityLevel() {
+        balanceProgram.setIntensityLevel(5);
+        // Test if unable to update intensity level with a lower intensity than set
+        balanceProgram.updateMaxIntensityLevel(4);
+        assertTrue(balanceProgram.getIntensityLevel() == 5);
+
+        // Test if unable to update intensity level with same intensity set
+        balanceProgram.updateMaxIntensityLevel(5);
+        assertTrue(balanceProgram.getIntensityLevel() == 5);
+
+        // Test if able to update intensity level when a higher intensity is set
+        balanceProgram.updateMaxIntensityLevel(6);
+        assertTrue(balanceProgram.getIntensityLevel() > 5);
+    }
+
+
     //ExerciseManager Tests
     ExerciseManager manager = new ExerciseManager();
+
 
 
 }
