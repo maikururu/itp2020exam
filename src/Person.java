@@ -6,7 +6,6 @@ import java.util.List;
 public class Person {
     public String name = "Unknown";
     public Program.Type preferredType;
-    public Exercise preferredExercise;
     public int preferredIntensity;
     Program currentProgram;
 
@@ -20,7 +19,6 @@ public class Person {
     public String toString() {
         return "Person{" +
                 "\n preferredExerciseType: '" + preferredType + '\'' +
-                ",\n preferredExercise: " + preferredExercise +
                 ",\n preferredIntensity:" + preferredIntensity +
                 ",\n currentProgram: " + currentProgram +
                 "\n}";
@@ -46,12 +44,8 @@ public class Person {
         this.preferredType = _type;
     }
 
-    public void setPreferredExercise(Exercise _exercise) {
-        this.preferredExercise = _exercise;
-    }
-
-    public Exercise getPreferredExercise() {
-        return this.preferredExercise;
+    public Program.Type getPreferredExerciseType() {
+        return this.preferredType;
     }
 
     public void setPreferredIntensity(int preferredIntensity) {

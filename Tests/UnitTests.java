@@ -1,24 +1,32 @@
 import org.junit.Test;
+import static org.junit.Assert.*;
+
+import java.util.List;
+
 import Exercise.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class UnitTests {
+
+    Person person = new Person("Kari", 4, Program.Type.Strength);
+
+    Program program = new Program(Program.Type.Strength);
+
     Exercise e = new Exercise("Exercise", 5, 10, 30, 5);
     Exercise e2 = new Exercise("Exercise 2", 1, 10, 30, 5);
 
     Endurance endurance = new Endurance("Body weight squats", 3, 5, 30, 3, "None");
-
     Balance b = new Balance("Atomic Situps", 3, 20, 30, 5, "None");
-
     Flexibility f = new Flexibility("Standing hamstring stretch", 3, 4, 2, 1, "Warm muscles");
-
     Strength s = new Strength("Bench press", 5, 3, 10, 3, 30, "Weight bench");
 
-    // Exercice class
+    public UnitTests() {
+        program.addExercise(s);
+    }
+
+    // Exercise Tests
     @Test
-    public void testExerciceClass() {
+    public void testExerciseClass() {
         Exercise e = new Exercise("Exercise", 5, 10, 30, 5);
         // Testing getName()
         assertEquals(e.getName(), "Exercise");
@@ -45,12 +53,11 @@ public class UnitTests {
 
     }
 
-    // Balance class
+    // Balance Tests
     @Test
     public void testBalanceClass() {
         // Testing getEquipment()
-        assertEquals(b.getEquipment(),"None");
-
+        assertEquals(b.getEquipment(), "None");
     }
 
     @Test
@@ -61,11 +68,11 @@ public class UnitTests {
         assertEquals(expected, b.toString());
     }
 
-    // Endurance class
+    // Endurance Tests
     @Test
     public void testEnduranceClass() {
         // Testing getEquipment()
-        assertEquals(endurance.getEquipment(),"None");
+        assertEquals(endurance.getEquipment(), "None");
 
     }
 
@@ -77,11 +84,12 @@ public class UnitTests {
         assertEquals(expected, endurance.toString());
     }
 
-    // Flexibility class
+
+    // Flexibility Tests
     @Test
     public void testFlexibilityClass() {
         // Testing getRequirement()
-        assertEquals(f.getRequirement(),"Warm muscles");
+        assertEquals(f.getRequirement(), "Warm muscles");
 
     }
 
@@ -93,11 +101,11 @@ public class UnitTests {
         assertEquals(expected, f.toString());
     }
 
-    // Strength class
+    // Strength Tests
     @Test
     public void testStrengthClass() {
         // Testing getWeights()
-        assertEquals(s.getWeights(),30);
+        assertEquals(s.getWeights(), 30);
 
         // Testing getEquipment
         assertEquals(s.getEquipment(), "Weight bench");
@@ -113,7 +121,68 @@ public class UnitTests {
     }
 
 
+    //Person Tests
+    @Test
+    public void testGetName() {
+        assertEquals(person.getName(), "Kari");
+    }
 
+    @Test
+    public void testGetCurrentProgram() {
+        person.setCurrentProgram(program);
 
+        assertEquals(person.getCurrentProgram(), program);
+    }
 
+    @Test
+    public void testGetPreferredExerciseType() {
+        assertEquals(person.getPreferredExerciseType(), Program.Type.Strength);
+    }
+
+    @Test
+    public void testGetPreferredIntensity() {
+        assertEquals(person.getPreferredIntensity(), 4);
+    }
+
+    @Test
+    public void testAcceptableProgram() {
+        assertTrue(person.acceptableProgram(program));
+    }
+
+    @Test
+    public void testAcceptableIntensity() {
+        assertTrue(person.acceptableProgram(program));
+    }
+
+    @Test
+    public void testIsPreferredType() {
+        assertTrue(person.isPreferredType(program));
+    }
+
+    //Program Tests
+    @Test
+    public void getProgramType() {
+        assertEquals(program.getProgramType(), Program.Type.Strength);
+    }
+
+    @Test
+    public void testGetDuration() {
+        assertEquals(program.getDuration(), 6);
+    }
+
+    @Test
+    public void testGetIntensityLevel() {
+        assertEquals(program.getIntensityLevel(), 5);
+    }
+
+    @Test
+    public void testGetExercises() {
+        List<Exercise> programExercises = program.getExercises();
+        assertEquals(programExercises.size(), 1);
+    }
+
+    @Test
+    public void testGetBalanced() {
+        assertFalse(program.getBalanced());
+    }
 }
