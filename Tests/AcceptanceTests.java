@@ -120,7 +120,7 @@ public class AcceptanceTests {
     public void testUpdateDuration() {
         balanceProgram = new Program(Program.Type.Balance);
 
-        // Test if duration updates correctly
+        // Test if program duration updates correctly
         balanceProgram.setDuration(10);
         balanceProgram.updateDuration(1);
 
