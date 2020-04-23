@@ -1,6 +1,7 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Exercise.*;
@@ -8,6 +9,7 @@ import Exercise.*;
 
 public class UnitTests {
 
+    ExerciseManager manager = new ExerciseManager();
     Person person = new Person("Kari", 4, Program.Type.Strength);
 
     Program program = new Program(Program.Type.Strength);
@@ -17,7 +19,7 @@ public class UnitTests {
 
     Endurance endurance = new Endurance("Body weight squats", 3, 5, 30, 3, "None");
     Balance b = new Balance("Atomic Situps", 3, 20, 30, 5, "None");
-    Flexibility f = new Flexibility("Standing hamstring stretch", 3, 4, 2, 1, "Warm muscles");
+    Flexibility f = new Flexibility("Standing hamstring stretch", 2, 4, 2, 1, "Warm muscles");
     Strength s = new Strength("Bench press", 5, 3, 10, 3, 30, "Weight bench");
 
     public UnitTests() {
@@ -25,6 +27,7 @@ public class UnitTests {
     }
 
     // Exercise Tests
+    /*------------------------------------------------------------------------------------------------------------------*/
     @Test
     public void testExerciseClass() {
         Exercise e = new Exercise("Exercise", 5, 10, 30, 5);
@@ -54,6 +57,7 @@ public class UnitTests {
     }
 
     // Balance Tests
+    /*------------------------------------------------------------------------------------------------------------------*/
     @Test
     public void testBalanceClass() {
         // Testing getEquipment()
@@ -69,6 +73,7 @@ public class UnitTests {
     }
 
     // Endurance Tests
+    /*------------------------------------------------------------------------------------------------------------------*/
     @Test
     public void testEnduranceClass() {
         // Testing getEquipment()
@@ -86,6 +91,7 @@ public class UnitTests {
 
 
     // Flexibility Tests
+    /*------------------------------------------------------------------------------------------------------------------*/
     @Test
     public void testFlexibilityClass() {
         // Testing getRequirement()
@@ -96,12 +102,13 @@ public class UnitTests {
     @Test
     public void testFlexibilityToString() {
         String expected =
-                "\n=============================\nExercise: \nName = Standing hamstring stretch\nIntensity = '3'\nDuration = 4\nRepetitions = 2\nSets = 1\nRequirement = Warm muscles";
+                "\n=============================\nExercise: \nName = Standing hamstring stretch\nIntensity = '2'\nDuration = 4\nRepetitions = 2\nSets = 1\nRequirement = Warm muscles";
 
         assertEquals(expected, f.toString());
     }
 
     // Strength Tests
+    /*------------------------------------------------------------------------------------------------------------------*/
     @Test
     public void testStrengthClass() {
         // Testing getWeights()
@@ -122,6 +129,7 @@ public class UnitTests {
 
 
     //Person Tests
+    /*------------------------------------------------------------------------------------------------------------------*/
     @Test
     public void testGetName() {
         assertEquals(person.getName(), "Kari");
@@ -160,6 +168,7 @@ public class UnitTests {
     }
 
     //Program Tests
+    /*------------------------------------------------------------------------------------------------------------------*/
     @Test
     public void getProgramType() {
         assertEquals(program.getProgramType(), Program.Type.Strength);
@@ -184,5 +193,86 @@ public class UnitTests {
     @Test
     public void testGetBalanced() {
         assertFalse(program.getBalanced());
+    }
+
+    @Test
+    public void testUpdateMaxIntensityLevel() {
+        program.setIntensityLevel(5);
+
+        // Test if unable to update intensity level with a lower intensity than set
+        program.updateMaxIntensityLevel(4);
+        assertTrue(program.getIntensityLevel() == 5);
+
+        // Test if unable to update intensity level with same intensity set
+        program.updateMaxIntensityLevel(5);
+        assertTrue(program.getIntensityLevel() == 5);
+
+        // Test if able to update intensity level when a higher intensity is set
+        program.updateMaxIntensityLevel(6);
+        assertTrue(program.getIntensityLevel() > 5);
+    }
+
+    @Test
+    public void testUpdateProgram() {
+        program = new Program(Program.Type.Strength);
+
+        assertEquals(program.getIntensityLevel(), 0);
+        assertEquals(program.getDuration(), 0);
+        assertFalse(program.getBalanced());
+
+        program.addExercise(s);
+        program.addExercise(b);
+
+        assertEquals(program.getIntensityLevel(), 5);
+        assertEquals(program.getDuration(), 46);
+
+        assertEquals(program.getExercises().get(0), b);
+        assertEquals(program.getExercises().get(1), s);
+
+        program.addExercise(endurance);
+        program.addExercise(f);
+
+        assertTrue(program.getBalanced());
+    }
+
+    // ExerciseManager Tests
+    /*------------------------------------------------------------------------------------------------------------------*/
+    @Test
+    public void testIsAppropriate() {
+        program = new Program(Program.Type.Strength);
+
+
+        // Test if program does not meet requirements of persons preferred exercise type and intensity
+        program.addExercise(f);
+        assertFalse(manager.isAppropriate(program, person));
+
+        // Test if program meets requirements of persons preferred exercise type and intensity
+        program.addExercise(e);
+        assertTrue(manager.isAppropriate(program, person));
+    }
+
+    @Test
+    public void testRecommendProgram() {
+        List<Program> programList = new ArrayList<Program>();
+
+        program = new Program(Program.Type.Strength);
+        Program enduranceProgram = new Program(Program.Type.Endurance);
+        Program flexibilityProgram = new Program(Program.Type.Flexibility);
+
+        // Add exercises we know will meet the preferred requirements
+        program.addExercise(b);
+        program.addExercise(e);
+
+        programList.add(program);
+        programList.add(enduranceProgram);
+        programList.add(flexibilityProgram);
+
+        List<Program> recommendedList = manager.recommendPrograms(programList, person);
+
+        for(Program program : recommendedList) {
+            System.out.println("Program "+ program.getProgramType() +" met the preferred person requirements of "+ person.getName());
+
+            assertTrue(person.acceptableProgram(program));
+        }
     }
 }
