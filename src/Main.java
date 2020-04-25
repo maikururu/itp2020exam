@@ -16,11 +16,7 @@ public class Main {
     public static void main(String[] args) {
         ExerciseManager manager = new ExerciseManager();
 
-        try {
-            manager.buildProgram();
-        } catch (IOException err) {
-            System.out.println("Oh shoot... an IOException error occurred.\nSomeone didn't enter values they should have, shame on you.");
-        }
+        manager.buildProgram();
 
         /*List<Program> programs = new ArrayList<Program>();
         List<Person> persons = new ArrayList<Person>();

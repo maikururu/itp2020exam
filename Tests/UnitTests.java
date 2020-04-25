@@ -1,8 +1,12 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import Exercise.*;
 
@@ -201,11 +205,11 @@ public class UnitTests {
 
         // Test if unable to update intensity level with a lower intensity than set
         program.updateMaxIntensityLevel(4);
-        assertTrue(program.getIntensityLevel() == 5);
+        assertEquals(program.getIntensityLevel(), 5);
 
         // Test if unable to update intensity level with same intensity set
         program.updateMaxIntensityLevel(5);
-        assertTrue(program.getIntensityLevel() == 5);
+        assertEquals(program.getIntensityLevel(), 5);
 
         // Test if able to update intensity level when a higher intensity is set
         program.updateMaxIntensityLevel(6);
@@ -253,7 +257,7 @@ public class UnitTests {
 
     @Test
     public void testRecommendProgram() {
-        List<Program> programList = new ArrayList<Program>();
+        List<Program> programList = new ArrayList<>();
 
         program = new Program(Program.Type.Strength);
         Program enduranceProgram = new Program(Program.Type.Endurance);
@@ -274,5 +278,128 @@ public class UnitTests {
 
             assertTrue(person.acceptableProgram(program));
         }
+    }
+
+    @Test
+    public void testBuildProgramBalance() {
+        manager = new ExerciseManager();
+
+        String testInput = "1";
+        InputStream stdin = System.in;
+
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        manager.buildProgram(scanner);
+
+        System.setIn(stdin);
+
+        assertEquals(manager.programs.size(), 1);
+        assertEquals(manager.programs.get(0).getProgramType(), Program.Type.Balance);
+    }
+
+    @Test
+    public void testBuildProgramEndurance() {
+        manager = new ExerciseManager();
+
+        String testInput = "2";
+        InputStream stdin = System.in;
+
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        manager.buildProgram(scanner);
+
+        System.setIn(stdin);
+
+        assertEquals(manager.programs.size(), 1);
+        assertEquals(manager.programs.get(0).getProgramType(), Program.Type.Endurance);
+    }
+
+    @Test
+    public void testBuildProgramFlexibility() {
+        manager = new ExerciseManager();
+
+        String testInput = "3";
+        InputStream stdin = System.in;
+
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        manager.buildProgram(scanner);
+
+        System.setIn(stdin);
+
+        assertEquals(manager.programs.size(), 1);
+        assertEquals(manager.programs.get(0).getProgramType(), Program.Type.Flexibility);
+    }
+
+    @Test
+    public void testBuildProgramStrength() {
+        manager = new ExerciseManager();
+
+        String testInput = "4";
+        InputStream stdin = System.in;
+
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        manager.buildProgram(scanner);
+
+        System.setIn(stdin);
+
+        assertEquals(manager.programs.size(), 1);
+        assertEquals(manager.programs.get(0).getProgramType(), Program.Type.Strength);
+    }
+
+    @Test
+    public void testBuildProgramQ() {
+        manager = new ExerciseManager();
+
+        String testInput = "q";
+        InputStream stdin = System.in;
+
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        manager.buildProgram(scanner);
+
+        System.setIn(stdin);
+
+        assertEquals(manager.programs.size(), 0);
+    }
+
+    @Test
+    public void testBuildProgramExit() {
+        manager = new ExerciseManager();
+
+        String testInput = "exit";
+        InputStream stdin = System.in;
+
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        manager.buildProgram(scanner);
+
+        System.setIn(stdin);
+
+        assertEquals(manager.programs.size(), 0);
+    }
+
+    @Test
+    public void testBuildProgramNothing() {
+        manager = new ExerciseManager();
+
+        String testInput = "\n";
+        InputStream stdin = System.in;
+
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        manager.buildProgram(scanner);
+
+        System.setIn(stdin);
+
+        assertEquals(manager.programs.size(), 0);
     }
 }

@@ -4,19 +4,19 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ExerciseManager {
-    List<Program> programs = new ArrayList<Program>();
-    List<Person> persons = new ArrayList<Person>();
+    List<Program> programs = new ArrayList<>();
+    List<Person> persons = new ArrayList<>();
 
     public ExerciseManager(){
 
     }
 
-    public void buildProgram() throws IOException {
+    public void buildProgram() {
         buildProgram(new Scanner(System.in));
-    };
+    }
 
     //Method to build a new program
-    public void buildProgram(Scanner scanner) throws IOException {
+    public void buildProgram(Scanner scanner) {
         System.out.println("Welcome to Prøvekaninen personal training software." +
                 "\n To create a new program, choose your desired Program Type, by entering its numerical value." +
                 "\n Balance: 1" +
@@ -62,7 +62,7 @@ public class ExerciseManager {
 
     // Method to check if persons preferred exercise exists or not, disregarding acceptable intensity level
     public List<Program> recommendPrograms(List<Program> _programs, Person _person){
-        List<Program> programList = new ArrayList<Program>();
+        List<Program> programList = new ArrayList<>();
 
         // loops through programs
         for (Program program : _programs){
