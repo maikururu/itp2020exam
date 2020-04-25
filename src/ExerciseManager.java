@@ -1,8 +1,7 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ExerciseManager {
     List<Program> programs = new ArrayList<Program>();
@@ -12,8 +11,12 @@ public class ExerciseManager {
 
     }
 
-    //Method to build a new program
     public void buildProgram() throws IOException {
+        buildProgram(new Scanner(System.in));
+    };
+
+    //Method to build a new program
+    public void buildProgram(Scanner scanner) throws IOException {
         System.out.println("Welcome to Prøvekaninen personal training software." +
                 "\n To create a new program, choose your desired Program Type, by entering its numerical value." +
                 "\n Balance: 1" +
@@ -22,40 +25,38 @@ public class ExerciseManager {
                 "\n Strength: 4" +
                 "\n At any moment, enter 'exit' or 'q' to quit.");
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String strIn = "";
+        String strIn = scanner.nextLine();
 
-        while(!strIn.equals("q") || strIn.equals("exit")) {
-            strIn = reader.readLine();
+        Program newProgram = null;
 
-            Program newProgram = null;
-
-            switch (strIn) {
-                case "1": {
-                    newProgram = new Program(Program.Type.Balance);
-                    break;
-                }
-                case "2": {
-                    newProgram = new Program(Program.Type.Endurance);
-                    break;
-                }
-                case "3": {
-                    newProgram = new Program(Program.Type.Flexibility);
-                    break;
-                }
-                case "4": {
-                    newProgram = new Program(Program.Type.Strength);
-                    break;
-                }
+        switch (strIn) {
+            case "1": {
+                newProgram = new Program(Program.Type.Balance);
+                break;
             }
-
-            if(newProgram!= null) {
-                programs.add(newProgram);
-                System.out.println("Created program "+ newProgram.getProgramType() +", and added it to the list of programs.");
-                strIn = "q";
-            } else  {
-                System.out.println("Could not create program, invalid value entered.");
+            case "2": {
+                newProgram = new Program(Program.Type.Endurance);
+                break;
             }
+            case "3": {
+                newProgram = new Program(Program.Type.Flexibility);
+                break;
+            }
+            case "4": {
+                newProgram = new Program(Program.Type.Strength);
+                break;
+            }
+            case "q":
+            case "exit": {
+                break;
+            }
+        }
+
+        if(newProgram != null) {
+            programs.add(newProgram);
+            System.out.println("Created program "+ newProgram.getProgramType() +", and added it to the list of programs.");
+        } else  {
+            System.out.println("Exiting program.");
         }
     }
 

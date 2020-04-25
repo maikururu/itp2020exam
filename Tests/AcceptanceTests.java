@@ -1,9 +1,11 @@
 import Exercise.*;
 import org.junit.Test;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
@@ -141,6 +143,24 @@ public class AcceptanceTests {
 
 
     //ExerciseManager Tests
+    @Test
+    public void testBuildProgram() throws IOException {
+        manager = new ExerciseManager();
+
+        String testInput = "1";
+        InputStream stdin = System.in;
+
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+
+        manager.buildProgram(scanner);
+
+        System.setIn(stdin);
+
+        assertEquals(manager.programs.size(), 1);
+        assertEquals(manager.programs.get(0).getProgramType(), Program.Type.Balance);
+    }
+
     @Test
     public void testIsAppropriate() {
         balanceProgram = new Program(Program.Type.Balance);
