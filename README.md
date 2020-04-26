@@ -22,49 +22,33 @@ Each exercise has a level of intensity. There are several types of exercises: St
 
 
 ### Installation:
-    
-   
-To use this or try this project out you can use the command: “git clone https://github.com/maikururu/itp2020exam.git” in your prefered terminal (if you are using linux based distros or macOS), if you are using a windows operative system you need to download GIT (use this link) and follow the steps on GIT to get started.
+To use this or try this project out you download the zipped folder, and open up itp2020exam folder in your preferred IDE, IntelliJ recommended. 
 You need to have [JDK](https://www.oracle.com/java/technologies/javase-downloads.html) installed (version 13 or higher) and use a IDE to run the program (preferred IDE to use is [IntelliJ](https://www.jetbrains.com/idea/) from JetBrains).
 
 
 ### Support:
-
-
 There will be absolutely no support or be any kind of a issue tracker for this project because this project was a part of an exam in the course called ITP2200.
 
 
 ### Roadmap:
-
-
 Since this project was a part of an exam in the course called “Introduksjon til programvare testing” also known as ITP2200 there will unfortunately not be any scheduled updates to this project, and this project will no longer be worked on as of now. 
 
 
 ### Contributing
-
-
 Since this project was part of an exam we are not looking for contributions at all, but feel free to use/clone the source code and play around.
 
 
 ### Authors and acknowledgment:
-
-
 Major shoutouts to all the dudes and dudettes that worked on this exam, it has been an honour and a blast.
 You all know who you are, you the real ones!
 
 
 ### Project status:
-
-
 The project itself is done and completed as it is a part of an exam in the course ITP2200.
 
 #### Legend:
-
-
 ITP2200 = Introduksjon til programvaretesting (Introduction to Software Testing)
 
-
 JDK = Java Development Kit
-
 
 IDE = Integrated Development Environment
