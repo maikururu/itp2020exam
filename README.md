@@ -1,21 +1,58 @@
-# itp2020exam
-Eksamen i ITP2200
+###### PSA: This is the final outcome, please do not fork this project. But feel free to clone it.    
 
 
-# Requirements
-1. Exercises are grouped into Programs.
-    - ~~Each program keeps an account of the overall intensity (the highest intensity among the included exercises).~~
-    - ~~Each program keeps account of whether or not it is balanced. A balanced program has at least one exercise of each type.~~
-    - ~~Each program has the exercises sorted in order of increasing intensity.~~
-    - ~~Each program has an overall duration. The duration of an exercise is twice the sum of the durations of all the exercises it includes (to account for rest).~~
+## Prøvekanin Personal Training Software (PPTS)
+
+
+### Description:
+
+
+PPTS is a system for managing exercises for a home workout program.  The system manages different exercises of different                types. 
+Each exercise has a level of intensity. There are several types of exercises: Strength, Endurance, Flexibility and Balance.
+
+
+### Installation:
     
-2. ~~Each person has a level of intensity they find appropriate, and a type of exercise they prefer. For each person, suggest an exercise program that is of the type they prefer, and has a level of intensity +/- 10% of the person’s preferred intensity level.~~
+   
+To use this or try this project out you can use the command: “git clone https://github.com/maikururu/itp2020exam.git” in your prefered terminal (if you are using linux based distros or macOS), if you are using a windows operative system you need to download GIT (use this link) and follow the steps on GIT to get started.
+You need to have [JDK](https://www.oracle.com/java/technologies/javase-downloads.html) installed (version 8 or higher) and use a IDE to run the program (preferred IDE to use is IntelliJ from JetBrains).
 
-3. The ExerciseManager should have
-    - ~~Methods for deciding if a Program is appropriate for a given Person.~~
-    - ~~Methods for building new Programs.~~
-    - ~~A method for recommending, from a given collection of Programs, which is most appropriate for a given Person.~~
-    
-# Tasks
-1. Write a set of test criteria that evaluate if the requirements are met or not. If you feel that the requirements are not clear or specific enough, motivate why and make a justified assumption for your plan.
 
+### Support:
+
+
+There will be absolutely no support or be any kind of a issue tracker for this project because this project was a part of an exam in the course called ITP2200.
+
+
+### Roadmap:
+
+
+Since this project was a part of an exam in the course called “Introduksjon til programvare testing” also known as ITP2200 there will unfortunately not be any scheduled updates to this project, and this project will no longer be worked on as of now. 
+
+
+### Contributing
+
+
+Since this project was part of an exam we are not looking for contributions at all, but feel free to use/clone the source code and play around.
+
+
+### Authors and acknowledgment:
+
+
+Major shoutout to my dudes and dudettes on group #0.
+You all know who you are, you the real ones!
+
+
+### Project status:
+
+
+The project itself is done and completed as it is a part of an exam in the course ITP2200.
+
+#### Legend:
+ITP2200 = Introduksjon til programvaretesting (Introduction to Software Testing)
+
+
+JDK = Java Development Kit
+
+
+IDE = Integrated Development Enviroment
