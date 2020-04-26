@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ExerciseManager {
-    List<Program> programs = new ArrayList<>();
-    List<Person> persons = new ArrayList<>();
+    public List<Program> programs = new ArrayList<>();
+    public List<Person> persons = new ArrayList<>();
 
     public ExerciseManager(){
 
@@ -67,10 +67,11 @@ public class ExerciseManager {
         // loops through programs
         for (Program program : _programs){
             if(_person.acceptableProgram(program)){
-                System.out.println("\nProgram "+program.getProgramType()+" is recommended for "+ _person.getName());
+                System.out.println("\nProgram "+ program.getProgramType() +" with the intensity of "+ program.getIntensityLevel()+", is recommended for "+ _person.getName());
                 programList.add(program);
             }
         }
+
         return programList;
     }
 
