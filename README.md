@@ -5,6 +5,15 @@
 
 
 ### Description:
+When running the program the following can be expected:
+1. You will be prompted to select the type of program you want to create by entering its numerical value from a displeyed list of all available program types.
+2. A new program is created.
+3. Exercises are created.
+4. Exercises are added to the newly created program.
+5. A person is created.
+6. The person is added to a list of persons.
+7. A method checks if a program is reccomendable for the given person.
+8. A program from the list of programs is reccommended to a specific person from the list of persons.
 
 
 PPTS is a system for managing exercises for a home workout program.  The system manages different exercises of different                types. 
